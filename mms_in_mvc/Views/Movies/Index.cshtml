@@ -1,0 +1,72 @@
+﻿@model IEnumerable<mms_in_mvc.Models.Movie>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+</head>
+<body>
+    <h2 class="mt-5 ">Movies</h2>
+    <hr />
+    <a class="btn btn-primary create-btn" href="/Movies/Create">Create New</a>
+
+
+
+    <table class="table table-striped" id="myTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Director)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Director)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" href="/Movies/Details/@item.MovieId">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a class="btn btn-success" href="/Movies/Edit/@item.MovieId">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger" href="/Movies/Delete/@item.MovieId">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

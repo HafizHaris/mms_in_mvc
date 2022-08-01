@@ -1,0 +1,40 @@
+﻿@model mms_in_mvc.Models.Movie
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movie Detail</title>
+</head>
+<body>
+    <div>
+        <h2>Movie Detail</h2>
+        <hr />
+        <div class="dl-horizontal">
+            <label>Genre: </label>
+            @Html.DisplayFor(model => model.Genre.Name)
+            <br />
+
+            <label>Movie Title: </label>
+            @Html.DisplayFor(model => model.Title)
+            <br />
+
+            <label>Director: </label>
+            @Html.DisplayFor(model => model.Director)
+            <br />
+
+
+        </div>
+
+     <div class="form-actions no-color" style="margin-top:20px;">
+        <a href="/Movies/Edit/@Model.MovieId" class="btn btn-primary" >Edit</a>
+        <a href="/Movies" class="btn btn-warning">Back</a>
+    </div>
+</div>
+</body>
+</html>

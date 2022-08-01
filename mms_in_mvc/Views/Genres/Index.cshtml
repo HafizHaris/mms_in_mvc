@@ -1,0 +1,56 @@
+﻿@model IEnumerable<mms_in_mvc.Models.Genre>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+   
+</head>
+<body>
+    <h2 class="mt-5 ">Generes</h2>
+    <hr />
+    <a class="btn btn-primary create-btn" href="/Genres/Create">Create New</a>
+    
+
+
+    <table class="table table-striped" id="myTable">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><p>@i</p></td>
+                    <td>
+                        <p>@item.Name</p>
+                    </td>
+                    <td>
+                        <a class="btn btn-success"  href="/Genres/Edit/@item.GenreId">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger"  href="/Genres/Delete/@item.GenreId">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+
+    
+
+</body>
+</html>
